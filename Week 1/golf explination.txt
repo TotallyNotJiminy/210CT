@@ -1,0 +1,11 @@
+checks every square on the top row
+if it finds a working set it adds to a list of solutions
+funtion b is recursive, it calls itself and nests itself 8 times, until it returns a blank list which becomes d
+d then stores the first possible for each set
+as the function recurses it "removes" all combinations that could not possibly work
+it then passes each list into k to check for possible solutions
+function k checks for and collisions, if there is a collision it returns true (meaning fail)
+if it returns false it adds that combination to the set
+solutions are added as each nest completes, giving a list of solutions
+I found that generating every solution and passing on only those with a chance of success what the most 
+effiecint way of doing this with the least amount of characters, it is not overly efficient.

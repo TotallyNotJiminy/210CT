@@ -1,30 +1,33 @@
 import csv
 import random
-def q1():
-    while 1:
+#algorithm for q1
+def q1(l,h,e):         
+    for d in range(0,len(l)):
         try:
-            #input
-            eggs=int(input("how many eggs does the alien lay: "))
-            hatch=int(input("how long does it take for each egg to hatch: "))
-            if hatch>0 and eggs>0:
-                break
-            else:
-                print("That's not valid")
-        except:
-            print("Not a valid input")
-    aliens=[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    for day in range(0,31):
-        try:
-            aliens[day+1]+=aliens[day]
-        
-            aliens[day+hatch]+=(aliens[day]*eggs)
+            l[d+1]+=l[d]
+            l[d+h-1]+=(l[d]*e)
         except IndexError:
             pass
-    count=1
-    #output
-    for each in aliens:
-        print("on day {0} there will be {1} aliens.".format(count,each))
-        count+=1
+    return l
+
+#algoritm for q2
+def matrixcalc(a,b,f):
+    c=[]
+    for q in a:
+        m=False
+        for w in b:
+            if q[0]==w[0] and q[1]==w[1]:
+                m=True
+                if f==1:
+                    c.append((q[0],q[1],(q[2]+w[2])))
+                elif f==2:
+                    c.append((q[0],q[1],(q[2]-w[2])))
+                elif f==3:
+                    c.append((q[0],q[1],(q[2]*w[2]))) 
+                break
+        if not m:
+            c.append(q)
+    return c
 
 def q2():
     a=generate_matrix(100)
@@ -39,16 +42,16 @@ def q2():
         print()
         choose=input()
         if choose=="add":
-            c=add_matrix(a,b)
+            c=matrixcalc(a,b,1)
             print(c)
             
         elif choose=="sub":
-            c=subtract_matrix(a,b)
+            c=matrixcalc(a,b,2)
             print(c)
             
         elif choose=="mul":
             
-            c=multiply_matrix(a,b)
+            c=matrixcalc(a,b,3)
             print(c)
         elif choose=="quit":
             break
@@ -60,7 +63,6 @@ def q2():
 def generate_matrix(size):
     #i have chosen to store it as a list of coordinates as its probably more effient
     #for a sparce matrix rather than representing every index individually
-    
     matrix=[]
     for count in range(0,size):
         for count2 in range(0,100):
@@ -68,72 +70,7 @@ def generate_matrix(size):
                 matrix.append((count,count2,random.randint(0,99)))
     return matrix
 
-def add_matrix(a,b):
-    c=[]
-    for eacha in a:
-        match=False
-        
-        for eachb in b:
 
-            if eacha[0]==eachb[0] and eacha[1]==eachb[1]:
-                match=True
-                c.append((eacha[0],eacha[1],(eacha[2]+eachb[2])))                
-                break
-            
-        if not match:
-            c.append(eacha)
-
-
-            
-    for eachb in b:
-        match=False
-        
-        for eacha in a:
-            
-            if eacha[0]==eachb[0] and eacha[1]==eachb[1]:
-                print(eacha)
-                print(eachb)
-                match=True
-                break
-            
-        if not match:
-            c.append(eachb)
-
-    return c
-
-def subtract_matrix(a,b):
-    c=[]
-    for eacha in a:
-        match=False
-        
-        for eachb in b:
-
-            if eacha[0]==eachb[0] and eacha[1]==eachb[1]:
-                match=True
-                c.append((eacha[0],eacha[1],(eacha[2]-eachb[2])))                
-                break
-            
-        if not match:
-            c.append(eacha)
-            
-    return c
-
-def multiply_matrix(a,b):
-    c=[]
-    for eacha in a:
-        match=False
-        
-        for eachb in b:
-
-            if eacha[0]==eachb[0] and eacha[1]==eachb[1]:
-                match=True
-                c.append((eacha[0],eacha[1],(eacha[2]*eachb[2])))                
-                break
-            
-        if not match:
-            c.append(eacha)
-            
-    return c
     
     
 def export_matrix(c):
@@ -155,7 +92,28 @@ def main():
         if choice==0:
             pass
         elif choice ==1:
-            q1()
+            while 1:
+                try:
+                    #input
+                    eggs=int(input("how many eggs does the alien lay: "))
+                    hatch=int(input("how long does it take for each egg to hatch: "))
+                    if hatch>0 and eggs>0:
+                        break
+                    else:
+                        print("That's not valid")
+                except:
+                    print("Not a valid input")
+            alienlist=[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            aliens=q1(alienlist,hatch,eggs)
+            count=1
+            #output
+            for each in aliens:
+                if each==1:
+                    aliens="alien"
+                else:
+                    aliens="aliens"
+                print("on day {0} there will be {1} {2}.".format(count,each,aliens))
+                count+=1
         elif choice==2:
             q2()
         elif choice==9:
