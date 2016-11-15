@@ -43,7 +43,6 @@ def p4(istring,pointer):
         
     else:
         pointer+=1
-        
     istring=p4(istring,pointer)
     return istring
             
@@ -67,18 +66,18 @@ def main():
             choice=None
 
         if choice==1:
-            istring=input("What would you like to be your sentence?")
+            istring=input("Please enter the sentence you would like to reverse: ")
             output=p1(istring)
             print(output)
 
         elif choice==2:
-            istring=input("Please enter your chosen string: ")+ " "
+            istring=input("Please enter the sentence you would like to reverse: ")+ " "
             rstring=p1b(istring,[])
             print(rstring)
             
         elif choice==3:
             try:
-                n=int(input("Please enther the number is prime: "))
+                n=int(input("Please enter a number: "))
                 if n>0:
                     valid=True
                 else:
@@ -96,7 +95,7 @@ def main():
                     print("It's not prime")
             
         elif choice==4:
-            istring=input("Please enter the phrase you want to remove: ")
+            istring=input("Please enter text with vowels in: ")
             print()
             print(p4(istring,0))
 
@@ -105,6 +104,7 @@ def main():
             break
         
         else:
+            print()
             print("That's not correct! (1-9)")
         
 

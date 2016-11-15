@@ -13,7 +13,6 @@ def k(g,f):
         r,c=h
         if r==i or(f-c)==-(i-r)or c==f or(f-c)==(i-r): return 1
     return 0
-
 if __name__=="__main__":
     for z in b(8):
         print(z)
