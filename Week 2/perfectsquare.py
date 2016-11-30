@@ -1,5 +1,5 @@
 def perfectsquare(i):
-    if i==0 or i==1:
+    if i<=1:
         return i
     else:
         if i**0.5==int(i**0.5):
@@ -7,6 +7,16 @@ def perfectsquare(i):
         else:
             i=perfectsquare(i-1)
             return i
-             
-q=perfectsquare(1874092837089560834756087174563745674657868347)
-print(q)
+        
+def main():
+    while 1:
+        try:
+            number=int(input("Please enter the number you'd like to check: "))
+            break
+        except ValueError:
+            print("That's not a number!")
+    q=perfectsquare(number)
+    print(q)
+
+if __name__=="__main__":
+    main()

@@ -50,7 +50,7 @@ class List(object):
                 else:
                     n.prev.next=n.next
                     n.next.prev=n.prev
-                    
+                print("Sucessfully Deleted!")
                 break
             n=n.next
         

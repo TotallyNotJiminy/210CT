@@ -8,7 +8,13 @@ def setmultiply(sets,iteration):
             sets[0][item]=sets[0][item]*sets[iteration][item]
         setmultiply(sets,iteration-1)
         return sets[0]
-    
+
+def setadd(sets):
+    pass
+
+def setsubtract(self):
+    pass
+
 def gensets(length):
     sets=[]
     for count in range(0,length):
@@ -19,5 +25,5 @@ def main():
     sets=[gensets(15),gensets(15),gensets(15),gensets(15),gensets(15),gensets(15)]
     sets=setmultiply(sets,len(sets)-1)
     print(sets)
-    
-main()
+if __name__=="__main__": 
+    main()
